@@ -4,12 +4,31 @@
   "description": "Restaurants to try database",
   "main": "server.js",
   "scripts": {
-    "start": "node server"
+    "start": "cross-env NODE_ENV=production node server/server.js",
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.js\" \"webpack-dev-server --open\""
   },
   "author": "Stephanie Wood",
   "license": "ISC",
   "dependencies": {
+    "cross-env": "^7.0.2",
     "express": "^4.17.1",
-    "mongoose": "^5.9.17"
+    "mongoose": "^5.9.17",
+    "nodemon": "^2.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-loader": "^8.1.0",
+    "concurrently": "^5.2.0",
+    "css-loader": "^3.5.3",
+    "html-loader": "^1.1.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
   }
 }

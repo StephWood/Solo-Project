@@ -10,14 +10,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // static files
-app.use('/assets', express.static(path.resolve(__dirname, './client/assets')));
+app.use(express.static(path.resolve(__dirname, '../build/')));
 
 // define route handlers
 app.use('/api', apiRouter);
 
 // respond with main app
 app.get('/', (req, res) =>
-  res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'))
+  res.status(200).sendFile(path.resolve(__dirname, '../build/index.html'))
 );
 
 //catch-all error handler

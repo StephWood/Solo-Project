@@ -13,20 +13,20 @@ body {
 .restaurantBox {
   max-width: 600px;
   margin: 0 auto;
-  padding: $p1;
-  box-shadow: $highShadow;
+  padding: 5px;
+  box-shadow: highShadow;
   border-radius: 5px;
-  border: $lightBorder;
-  background-color: $lightGray;
+  border: lightBorder;
+  background-color: lightGray;
 }
 
 .restaurantContainer {
-  padding: $p1;
+  padding: 5px;
   width: 95%;
-  margin: $p1 auto;
-  box-shadow: $plainShadow;
-  border: $lightBorder;
-  background-color: $lightGray;
+  margin: 5px auto;
+  box-shadow: plainShadow;
+  border: lightBorder;
+  background-color: lightGray;
 }
 
 #header {

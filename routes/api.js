@@ -8,8 +8,11 @@ router.get('/', poiController.getRestaurants, (req, res) =>
   res.status(200).json(res.locals.restaurants)
 );
 
-router.post('/add', poiController.addRestaurant, (req, res) =>
-  res.status(200).json()
+router.post(
+  '/add',
+  poiController.addRestaurant,
+  poiController.getRestaurants,
+  (req, res) => res.status(200).json(res.locals.restaurants)
 );
 
 module.exports = router;

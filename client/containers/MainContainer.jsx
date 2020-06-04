@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import RestaurantCard from './RestaurantCard';
+
 class Restaurants extends Component {
   constructor() {
     super();
@@ -27,25 +29,28 @@ class Restaurants extends Component {
   }
 
   render() {
-    const { restaurantList } = this.state;
-    if (!restaurantList.length) return <div>Sorry, no restaurants found</div>;
-    const restaurants = restaurantList.map((restaurant) => {
-      return <RestaurantCard key={restaurant._id} name={restaurant.name} />;
+    const restaurants = this.state.restaurants;
+    if (!restaurants.length) return <div>Sorry, no restaurants found</div>;
+    const restaurantList = restaurants.map((restaurant) => {
+      return (
+        <RestaurantCard
+          key={restaurant._id}
+          name={restaurant.name}
+          city={restaurant.city}
+        />
+      );
     });
 
     return (
       <section className="mainContainer">
         <header className="restaurantBox">
           <h1 id="header">Restaurants</h1>
-          {/* Not sure how to add these functions to the input/button */}
-          <form onSubmit={addRestaurant}>
-            <input id="new-restaurant" value={newRestaurant} />
+          <form onSubmit={`/add`}>
+            <input id="new-restaurant" type="text"></input>
           </form>
-          <Link to={`/add`}>
-            <button type="button" className="addBtn">
-              Add Restaurant
-            </button>
-          </Link>
+          <button type="button" className="addBtn">
+            Add Restaurant
+          </button>
         </header>
         <div className="restaurantContainer">{restaurantList}</div>
       </section>
@@ -53,4 +58,4 @@ class Restaurants extends Component {
   }
 }
 
-export default MainContainer;
+export default Restaurants;

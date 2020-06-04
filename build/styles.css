@@ -7,7 +7,8 @@
   padding: 0;
 }
 body {
-  padding-top: 4em;
+  margin: 10px;
+  padding-top: 2em;
 }
 
 .restaurantBox {
@@ -32,7 +33,7 @@ body {
 #header {
   text-align: center;
   letter-spacing: 0.2em;
-  margin-bottom: 2px;
+  margin-left: 2px;
 }
 
 input {

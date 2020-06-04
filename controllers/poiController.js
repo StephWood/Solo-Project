@@ -7,6 +7,7 @@ poiController.getRestaurants = (req, res, next) => {
   models.Restaurant.find({})
     .exec()
     .then((data) => {
+      console.log(data);
       res.locals.restaurants = data;
       return next();
     })
@@ -22,12 +23,14 @@ poiController.addRestaurant = (req, res, next) => {
   console.log('inside addRestaurant');
   models.Restaurant.create(
     { name: req.params.name, city: req.params.city },
-    () => {
-      if (err)
+    (err, result) => {
+      if (err) {
         return next({
           log: 'Error in poiController.addRestaurant',
           message: { err: `Error is ${err}` },
         });
+      }
+      return next();
     }
   );
 };

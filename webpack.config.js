@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: ['./client/index.js'],
+  entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
@@ -19,25 +19,22 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.(js|jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
         },
-      },
-      {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /.html$/,
-        exclude: /node_modules/,
-        use: 'html-loader',
       },
     ],
   },
   resolve: {
     //enable importing js / jsx files without specifying their extension
+    extensions: ['.js', '.jsx'],
   },
 };

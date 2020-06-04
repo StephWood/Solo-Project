@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  color: #464646;
+  background-color: paleturquoise;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body {
+  padding-top: 4em;
+}
+
+.restaurantBox {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: $p1;
+  box-shadow: $highShadow;
+  border-radius: 5px;
+  border: $lightBorder;
+  background-color: $lightGray;
+}
+
+.restaurantContainer {
+  padding: $p1;
+  width: 95%;
+  margin: $p1 auto;
+  box-shadow: $plainShadow;
+  border: $lightBorder;
+  background-color: $lightGray;
+}
+
+#header {
+  text-align: center;
+  letter-spacing: 0.2em;
+  margin-bottom: 2px;
+}
+
+input {
+  margin: 2px;
+}
+
+button {
+  min-width: 4em;
+  padding: 0.4em 1em;
+  margin: 3px;
+  border: 1px solid darkgray;
+  border-radius: 2px;
+}

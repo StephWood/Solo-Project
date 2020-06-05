@@ -8,7 +8,10 @@ class Restaurants extends Component {
 
     this.state = {
       restaurants: [],
+      restaurantName: '',
     };
+    this.addRestaurant = this.addRestaurant.bind(this);
+    this.inputRestaurant = this.inputRestaurant.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +31,37 @@ class Restaurants extends Component {
       );
   }
 
+  addRestaurant() {
+    // if (name === '') {
+    //   alert('Please enter a restaurant name');
+    // }
+    console.log('in add restaurant');
+    const body = { name: this.state.restaurantName };
+    console.log(body);
+    fetch('/api/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/JSON',
+      },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({ restaurants: data });
+        console.log(this.state.restaurants);
+      });
+  }
+
+  inputRestaurant(e) {
+    console.log('in inputRestaurant');
+    const { value } = e.target;
+    this.setState({
+      restaurantName: value,
+    });
+    console.log(this.state.restaurantName);
+  }
+
   render() {
     const restaurants = this.state.restaurants;
     if (!restaurants.length) return <div>Sorry, no restaurants found</div>;
@@ -44,13 +78,26 @@ class Restaurants extends Component {
     return (
       <section className="mainContainer">
         <header className="restaurantBox">
-          <h1 id="header">Restaurants</h1>
-          <form onSubmit={`/add`}>
-            <input id="new-restaurant" type="text"></input>
-          </form>
-          <button type="button" className="addBtn">
-            Add Restaurant
-          </button>
+          <h1 id="header">Restaurants to Try</h1>
+          <div className="addRest">
+            <input
+              id="new-restaurant"
+              type="text"
+              name="name"
+              autoComplete="off"
+              onChange={this.inputRestaurant}
+              value={this.state.restaurantName}
+            ></input>
+            <button
+              type="button"
+              className="addBtn"
+              onClick={() => {
+                this.addRestaurant();
+              }}
+            >
+              Add Restaurant
+            </button>
+          </div>
         </header>
         <div className="restaurantContainer">{restaurantList}</div>
       </section>

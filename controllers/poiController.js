@@ -20,10 +20,13 @@ poiController.getRestaurants = (req, res, next) => {
 };
 
 poiController.addRestaurant = (req, res, next) => {
-  console.log('inside addRestaurant');
+  const { name, city } = req.body;
+  // console.log('inside addRestaurant');
   models.Restaurant.create(
-    { name: req.params.name, city: req.params.city },
+    // console.log('inside Restaurant.create ', req.body, { name }),
+    { name, city },
     (err, result) => {
+      res.locals.restaurants = result;
       if (err) {
         return next({
           log: 'Error in poiController.addRestaurant',
@@ -33,6 +36,20 @@ poiController.addRestaurant = (req, res, next) => {
       return next();
     }
   );
+};
+
+poiController.deleteRestaurant = (req, res, next) => {
+  const { name, city } = req.params;
+  models.Restaurant.deleteOne({ name, city }, (err, result) => {
+    res.locals.restaurants = result;
+    if (err) {
+      return next({
+        log: 'Error in poiController.deleteRestaurant',
+        message: { err: `Error is ${err}` },
+      });
+    }
+    return next();
+  });
 };
 
 module.exports = poiController;

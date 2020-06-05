@@ -16,24 +16,37 @@ body {
   margin: 0 auto;
   padding: 5px;
   box-shadow: highShadow;
-  border-radius: 5px;
-  border: lightBorder;
-  background-color: lightGray;
+  border-radius: 2px;
+  border: 2px;
+  /* justify-content: center; */
+}
+
+.addRest {
+  display: flex;
+  justify-content: center;
 }
 
 .restaurantContainer {
-  padding: 5px;
+  padding: 2px;
   width: 95%;
   margin: 5px auto;
   box-shadow: plainShadow;
-  border: lightBorder;
+  border: 2px;
   background-color: lightGray;
+}
+
+.restaurantName {
+  padding: 5px 4px;
+}
+
+.cityName {
+  padding: 0 4px;
 }
 
 #header {
   text-align: center;
   letter-spacing: 0.2em;
-  margin-left: 2px;
+  padding: 10px;
 }
 
 input {

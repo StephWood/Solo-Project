@@ -15,4 +15,11 @@ router.post(
   (req, res) => res.status(200).json(res.locals.restaurants)
 );
 
+router.delete(
+  '/delete',
+  poiController.deleteRestaurant,
+  poiController.getRestaurants,
+  (req, res) => res.status(200).json(res.locals.restaurants)
+);
+
 module.exports = router;
